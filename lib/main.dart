@@ -1,4 +1,4 @@
-import 'package:budget_buddy/sign_up.dart';
+import 'package:budget_buddy/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,13 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyForm(),
+      home: SignupScreen(),
     );
   }
 }
