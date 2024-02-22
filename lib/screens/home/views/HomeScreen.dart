@@ -4,29 +4,47 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../stats/stats.dart';
 import 'mainScreen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var widgetList=[
+    MainScreen(),
+    statScreen(),
+  ];
+  int index=0;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(10)
         ),
         child: BottomNavigationBar(
+            onTap: (value){
+              setState(() {
+                  index=value;
+              });
+            },
           items: [
             BottomNavigationBarItem(
+
               icon: Icon(Icons.home),
               label: 'Home'
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.auto_graph_rounded),
                 label: 'Stats'
-        
+
             )
           ],
         ),
@@ -35,7 +53,9 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+
+          },
           child: Container(
             width: 60,
             height: 60,
@@ -55,7 +75,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    body: MainScreen(),
+    body: (index==0)?MainScreen():statScreen()
+
     );
   }
 }
